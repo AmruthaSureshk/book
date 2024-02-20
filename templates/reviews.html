@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<table>
+    <tr>
+        <th>
+            <h1>Author Review List</h1>
+            <ul>
+                {% for review in reviews %}
+                <li> Author: {{ review.author_name }} - Review comment - {{ review.comment }} - Rating: {{ review.rating
+                    }} </li>
+                {% endfor %}
+            </ul>
+
+        </th>
+        <th>
+
+            <h1>Author review</h1>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ authorreviewfrm.as_p }}
+                <button type="submit">submit</button>
+            </form>
+        </th>
+
+    </tr>
+
+    <tr>
+        <th>
+            <h1>Book Review List</h1>
+            <ul>
+                {% for review in reviews %}
+                <li>Book : {{ review.book_title }} - Review comment {{ review.comment }} - Rating: {{ review.rating}} -
+                </li>
+                {% endfor %}
+            </ul>
+        </th>
+        <th>
+            <h1>Book review</h1>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ bookreviewfrm.as_p }}
+                <button type="submit">submit</button>
+            </form>
+        </th>
+    </tr>
+</table>
+<h4>Author review</h4>
+<ul>
+    {% for author in authors %}
+    <li>
+        <a href="{% url 'author_reviews' author.id %}">{{ author.name }}'s Reviews</a>
+    </li>
+    {% endfor %}
+</ul>
+
+
+<div class="row">
+    <ul>
+        <li><a href="{% url 'author-list' %}">Author</a></li>
+        <li><a href="{% url 'book' %}">Books</a></li>
+
+    </ul>
+</div>
+{% endblock %}

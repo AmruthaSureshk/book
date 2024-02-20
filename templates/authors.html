@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<title>Authors List</title>
+<div class="container">
+
+
+<h1>Authors List</h1>
+{% for author in authors %}
+<table>
+    <tr>
+        <th>
+            {{ author.name }}
+        </th>
+        <th>
+            Number of Books- {{ author.total_books }}
+        </th>
+    </tr>
+</table>
+{% endfor %}
+
+
+</div>
+<br><br>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h4>Create</h4>
+
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ frm.as_p }}
+                <button type="submit">submit</button>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <ul>
+        <li><a href="{% url 'book' %}">Books</a></li>
+        <li><a href="{% url 'review-list' %}">Review</a></li>
+
+    </ul>
+</div>
+
+{% endblock %}

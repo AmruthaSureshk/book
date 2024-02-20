@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="banner">
+                <div class="banner-text">
+                    <h1>Book Management</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <ul>
+            <li><a href="{% url 'author-list' %}">Author</a></li>
+            <li><a href="{% url 'book' %}">Books</a></li>
+            <li><a href="{% url 'review-list' %}">Review</a></li>
+
+        </ul>
+    </div>
+</div>
+
+{% endblock %}

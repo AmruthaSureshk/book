@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Books List</h1>
+<div class="container">
+    <div class="row">
+
+<ul>
+    {% for book in books %}
+    <table>
+        <tr>
+            <th>Book - {{ book.title }} </th><br>
+            <th> Author -  {{ book.author_name }} </th><br>
+            <th>  Rating - {{ book.total_rating }} </th>
+        </tr>
+    </table>
+
+    <a class="btn btn-danger" href="{% url 'delete' book.id %}">Delete</a>
+    <a class="btn btn-success" href="{% url 'update' book.id %}">Update</a>
+    {% endfor %}
+</ul>
+
+</div>
+</div>
+<h1>Add book</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ bukfrm.as_p }}
+    <button type="submit">submit</button>
+</form>
+</div>
+</div>
+</div>
+
+<div class="row">
+    <ul>
+        <li><a href="{% url 'author-list' %}">Author</a></li>
+        <li><a href="{% url 'review-list' %}">Review</a></li>
+
+    </ul>
+</div>
+{% endblock %}

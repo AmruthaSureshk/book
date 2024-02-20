@@ -1,0 +1,25 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+    <title>Reviews of Author</title>
+
+    <h1>Reviews of Author</h1>
+    <ul>
+        {% for review in author_reviews %}
+            <li>{{ review.comment }} - Rating: {{ review.rating }}</li>
+        {% endfor %}
+    </ul>
+
+
+    <div class="container">
+        <div class="row">
+            <ul>
+                <li><a href="{% url 'author-list' %}">Author</a></li>
+                <li><a href="{% url 'book' %}">Books</a></li>
+                <li><a href="{% url 'review-list' %}">Review</a></li>
+    
+            </ul>
+        </div>
+    </div>
+    {% endblock %}
